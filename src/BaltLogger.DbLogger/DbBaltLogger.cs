@@ -46,7 +46,6 @@ namespace BaltLogger.DbLogger
             {
                 _db.Logs.Add(new DbLogInfo { Type = "Error", Message = message, Date = DateTime.Now });
                 _db.SaveChanges();
-                _db.Dispose();
                 return true;
             }
             catch (Exception ex)
@@ -54,17 +53,36 @@ namespace BaltLogger.DbLogger
                 Console.Write(ex.Message);
                 return false;
             }
-
         }
 
         public bool Success(string message)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _db.Logs.Add(new DbLogInfo { Type = "Success", Message = message, Date = DateTime.Now });
+                _db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                return false;
+            }
         }
 
         public bool Warning(string message)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _db.Logs.Add(new DbLogInfo { Type = "Warning", Message = message, Date = DateTime.Now });
+                _db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                return false;
+            }
         }
     }
 }

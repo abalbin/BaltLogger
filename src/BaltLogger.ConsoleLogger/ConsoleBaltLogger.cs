@@ -10,20 +10,41 @@ namespace BaltLogger.ConsoleLogger
         public string LoggerName => "Balt Console Logger";
         public bool Error(string message)
         {
-            Console.WriteLine($"Error: {message}");
-            return true;
+            try
+            {
+                Console.WriteLine($"Error: {message}");
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool Success(string message)
         {
-            Console.WriteLine($"Success: {message}");
-            return true;
+            try
+            {
+                Console.WriteLine($"Success: {message}");
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool Warning(string message)
         {
-            Console.WriteLine($"Warning: {message}");
-            return true;
+            try
+            {
+                Console.WriteLine($"Warning: {message}");
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

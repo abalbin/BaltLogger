@@ -76,8 +76,18 @@ namespace BaltLogger.ConsoleApp
                     {
                         case "A":
                             LogError(logger, message);
+                            LogSuccess(logger, message);
+                            LogWarning(logger, message);
                             break;
-
+                        case "W":                            
+                            LogWarning(logger, message);
+                            break;
+                        case "S":
+                            LogSuccess(logger, message);
+                            break;
+                        case "E":
+                            LogError(logger, message);
+                            break;
                     }
                 }
                 Console.WriteLine("");
